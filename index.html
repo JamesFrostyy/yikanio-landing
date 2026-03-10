@@ -6,108 +6,70 @@
 <title>Yikanio — Halı Yıkama İşletmeniz İçin Akıllı Yönetim Sistemi</title>
 <meta name="description" content="Kağıt defteri bırakın. Siparişlerinizi takip edin, müşterilerinize otomatik SMS atın, cironuzu görün. 14 gün tamamen ücretsiz."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --c-bg:#FAFAF7;
-  --c-bg2:#F2F0E8;
-  --c-ink:#141414;
-  --c-ink2:#1E2A3A;
-  --c-green:#1A6B55;
-  --c-green-l:#E8F5F1;
-  --c-green-m:#2ECC9A;
+  --c-bg:#F4F8FF;
+  --c-bg2:#E8F1FF;
+  --c-ink:#0D1B2A;
+  --c-ink2:#0F2240;
+  --c-blue:#0B72D9;
+  --c-blue-d:#0057B8;
+  --c-cyan:#2BAFF5;
+  --c-blue-l:#E6F1FC;
   --c-amber:#D97706;
   --c-amber-l:#FEF3C7;
-  --c-red:#DC2626;
-  --c-muted:#6B7280;
-  --c-border:#E5E2D8;
+  --c-muted:#5A7399;
+  --c-border:#C8D9F0;
   --c-white:#FFFFFF;
-  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
-  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
-  --shadow-lg:0 20px 60px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.06);
-  --shadow-xl:0 40px 100px rgba(0,0,0,.12),0 16px 40px rgba(0,0,0,.08);
+  --grad:linear-gradient(135deg,#0B72D9,#2BAFF5);
+  --shadow-sm:0 1px 3px rgba(0,86,214,.08),0 1px 2px rgba(0,86,214,.06);
+  --shadow-md:0 4px 16px rgba(0,86,214,.1),0 2px 4px rgba(0,86,214,.06);
+  --shadow-lg:0 20px 60px rgba(0,86,214,.12),0 8px 24px rgba(0,86,214,.08);
+  --shadow-xl:0 40px 100px rgba(0,86,214,.14),0 16px 40px rgba(0,86,214,.08);
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--c-bg);color:var(--c-ink);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;line-height:1.6}
-
-/* ─── TOPBAR ─── */
-.topbar{background:var(--c-green);color:#fff;padding:9px 24px;text-align:center;font-size:13px;font-weight:600;letter-spacing:.1px}
-.topbar a{color:#a7f3d0;text-decoration:underline}
-
-/* ─── NAV ─── */
-nav{position:sticky;top:0;z-index:200;background:rgba(250,250,247,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--c-border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--c-ink)}
-.nav-logomark{width:34px;height:34px;border-radius:10px;background:var(--c-ink);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
-.nav-wordmark{font-family:'Fraunces',serif;font-weight:900;font-size:20px;letter-spacing:-.5px}
+.topbar{background:#0A1929;color:#fff;padding:9px 24px;text-align:center;font-size:13px;font-weight:600}
+.topbar a{color:#d0eeff;text-decoration:underline}
+nav{position:sticky;top:0;z-index:200;background:rgba(244,248,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--c-border);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logoimg{width:36px;height:36px;border-radius:10px;object-fit:contain;background:transparent}
+.nav-wordmark{font-family:'Syne',sans-serif;font-size:22px;font-weight:900;letter-spacing:-.5px;line-height:1}
+.nav-wordmark .w1{color:var(--c-ink)}
+.nav-wordmark .w2{color:#2BAFF5}
 .nav-links{display:flex;gap:32px}
 .nav-links a{font-size:14px;font-weight:500;color:var(--c-muted);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--c-ink)}
 .nav-actions{display:flex;gap:10px;align-items:center}
 .btn-nav-ghost{font-size:13px;font-weight:600;color:var(--c-ink);text-decoration:none;padding:8px 16px;border-radius:8px;border:1.5px solid var(--c-border);transition:all .15s}
-.btn-nav-ghost:hover{border-color:var(--c-ink)}
-.btn-nav-solid{font-size:13px;font-weight:700;color:#fff;text-decoration:none;padding:9px 18px;border-radius:8px;background:var(--c-green);transition:all .15s;white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;border:none;cursor:pointer}
-.btn-nav-solid:hover{background:#155e47;transform:translateY(-1px)}
-
-/* ─── HERO ─── */
-.hero{
-  padding:80px 48px 0;
-  max-width:1240px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 520px;
-  gap:64px;align-items:center;
-  min-height:calc(100vh - 100px);
-}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--c-green-l);color:var(--c-green);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.3px;margin-bottom:24px;border:1px solid rgba(26,107,85,.15)}
-.hero-eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--c-green-m);animation:pulse 2s infinite}
+.btn-nav-ghost:hover{border-color:var(--c-blue);color:var(--c-blue)}
+.btn-nav-solid{font-size:13px;font-weight:700;color:#fff;padding:9px 18px;border-radius:8px;background:var(--grad);white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;border:none;cursor:pointer;box-shadow:0 2px 12px rgba(11,114,217,.3);transition:all .15s}
+.btn-nav-solid:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(11,114,217,.4)}
+.hero{padding:80px 48px 0;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 520px;gap:64px;align-items:center;min-height:calc(100vh - 100px)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--c-blue-l);color:var(--c-blue-d);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.3px;margin-bottom:24px;border:1px solid rgba(11,114,217,.2)}
+.hero-eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--c-cyan);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-.hero h1{
-  font-family:'Fraunces',serif;
-  font-size:clamp(40px,5vw,64px);
-  font-weight:900;line-height:1.08;letter-spacing:-2.5px;
-  color:var(--c-ink);margin-bottom:24px;
-}
-.hero h1 .serif-it{font-style:italic;color:var(--c-green)}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(40px,5vw,64px);font-weight:900;line-height:1.08;letter-spacing:-2.5px;color:var(--c-ink);margin-bottom:24px}
+.hero h1 .serif-it{font-style:italic;color:var(--c-blue);-webkit-text-fill-color:var(--c-blue)}
 .hero-sub{font-size:18px;color:var(--c-muted);line-height:1.75;max-width:500px;margin-bottom:40px}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--c-green);color:#fff;
-  padding:16px 28px;border-radius:12px;
-  font-size:15px;font-weight:700;text-decoration:none;
-  border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
-  transition:all .2s;box-shadow:0 4px 16px rgba(26,107,85,.3);
-}
-.btn-primary:hover{background:#155e47;transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,107,85,.35)}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--c-white);color:var(--c-ink);
-  padding:16px 24px;border-radius:12px;
-  font-size:15px;font-weight:600;text-decoration:none;
-  border:1.5px solid var(--c-border);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
-  transition:all .2s;
-}
-.btn-secondary:hover{border-color:var(--c-ink)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;padding:16px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;box-shadow:0 4px 20px rgba(11,114,217,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(26,126,255,.45)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:var(--c-white);color:var(--c-ink);padding:16px 24px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid var(--c-border);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.btn-secondary:hover{border-color:var(--c-blue);color:var(--c-blue)}
 .hero-social{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--c-muted)}
 .avatars{display:flex}
-.avatars span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border:2px solid var(--c-bg);margin-left:-9px;background:var(--c-ink);color:#fff}
+.avatars span{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border:2px solid var(--c-bg);margin-left:-9px;background:var(--c-blue-d);color:#fff}
 .avatars span:first-child{margin-left:0}
+.avatars span:last-child{background:var(--grad)}
 .hero-social .rating{display:flex;flex-direction:column}
 .hero-social .stars{color:var(--c-amber);font-size:13px;letter-spacing:2px}
-
-/* HERO MOCKUP */
 .hero-visual{position:relative;padding-bottom:32px}
-.app-window{
-  background:var(--c-white);border-radius:20px;
-  border:1px solid var(--c-border);
-  box-shadow:var(--shadow-xl);
-  overflow:hidden;
-  animation:gentleFloat 7s ease-in-out infinite;
-}
+.app-window{background:var(--c-white);border-radius:20px;border:1px solid var(--c-border);box-shadow:var(--shadow-xl);overflow:hidden;animation:gentleFloat 7s ease-in-out infinite}
 @keyframes gentleFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-8px) rotate(.3deg)}66%{transform:translateY(-4px) rotate(-.2deg)}}
-.win-bar{
-  height:44px;background:var(--c-ink2);
-  display:flex;align-items:center;padding:0 16px;gap:12px;
-}
+.win-bar{height:44px;background:var(--c-ink2);display:flex;align-items:center;padding:0 16px;gap:12px}
 .win-dots{display:flex;gap:5px}
 .win-dots span{width:10px;height:10px;border-radius:50%}
 .win-dots span:nth-child(1){background:#FF5F57}
@@ -116,225 +78,176 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,250,247,.95);backdrop-
 .win-url{flex:1;background:rgba(255,255,255,.1);border-radius:6px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,.5);text-align:center;font-family:monospace}
 .win-tabs{display:flex;background:var(--c-bg2);border-bottom:1px solid var(--c-border)}
 .win-tab{padding:10px 16px;font-size:12px;font-weight:600;color:var(--c-muted);cursor:default;border-bottom:2px solid transparent}
-.win-tab.on{color:var(--c-green);border-bottom-color:var(--c-green);background:var(--c-white)}
+.win-tab.on{color:var(--c-blue);border-bottom-color:var(--c-blue);background:var(--c-white)}
 .win-body{padding:16px}
 .win-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .kpi{background:var(--c-bg);border:1px solid var(--c-border);border-radius:10px;padding:12px}
 .kpi-l{font-size:10px;color:var(--c-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
-.kpi-v{font-family:'Fraunces',serif;font-size:22px;font-weight:900;line-height:1}
-.kpi-v.green{color:var(--c-green)}
+.kpi-v{font-family:'Syne',sans-serif;font-size:22px;font-weight:900;line-height:1}
+.kpi-v.green{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .kpi-v.amber{color:var(--c-amber)}
 .order-rows{display:flex;flex-direction:column;gap:6px}
 .order-row{display:flex;align-items:center;gap:8px;padding:9px 11px;background:var(--c-bg);border:1px solid var(--c-border);border-radius:9px}
-.or-id{font-size:9.5px;font-weight:800;color:var(--c-green);background:var(--c-green-l);padding:3px 7px;border-radius:5px;min-width:64px;text-align:center}
-.or-name{font-size:12px;font-weight:600;flex:1}
-.or-price{font-size:12px;font-weight:700;color:var(--c-green)}
+.or-id{font-size:9.5px;font-weight:800;color:var(--c-blue);background:var(--c-blue-l);padding:3px 7px;border-radius:5px;min-width:64px;text-align:center}
+.or-name{font-size:12px;font-weight:600;flex:1;color:var(--c-ink)}
+.or-price{font-size:12px;font-weight:700;color:var(--c-blue-d)}
 .badge{font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap}
 .badge-bekl{background:var(--c-amber-l);color:var(--c-amber)}
-.badge-yik{background:var(--c-green-l);color:var(--c-green)}
-.badge-haz{background:#f0f0f0;color:#555}
-
-/* floating cards */
-.float-sms{
-  position:absolute;bottom:40px;left:-48px;
-  background:var(--c-white);border:1px solid var(--c-border);
-  border-radius:14px;padding:12px 16px;
-  box-shadow:var(--shadow-md);
-  display:flex;align-items:center;gap:12px;
-  min-width:220px;
-  animation:floatCard 5s 1s ease-in-out infinite;
-}
-.float-stat{
-  position:absolute;top:24px;right:-36px;
-  background:var(--c-green);color:#fff;
-  border-radius:14px;padding:14px 18px;
-  box-shadow:0 8px 32px rgba(26,107,85,.35);
-  animation:floatCard 5s .5s ease-in-out infinite;
-}
+.badge-yik{background:var(--c-blue-l);color:var(--c-blue-d)}
+.badge-haz{background:#e6f4ea;color:#2e7d32}
+.float-sms{position:absolute;bottom:40px;left:-48px;background:var(--c-white);border:1px solid var(--c-border);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:12px;min-width:220px;animation:floatCard 5s 1s ease-in-out infinite}
+.float-stat{position:absolute;top:24px;right:-36px;background:var(--grad);color:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 8px 32px rgba(11,114,217,.4);animation:floatCard 5s .5s ease-in-out infinite}
 @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .float-sms-ico{font-size:22px}
 .float-sms-txt{font-size:11px;line-height:1.4}
 .float-sms-txt strong{display:block;font-size:12px;color:var(--c-ink)}
 .float-sms-txt span{color:var(--c-muted)}
-.float-stat-val{font-family:'Fraunces',serif;font-size:28px;font-weight:900;line-height:1}
-.float-stat-lbl{font-size:11px;opacity:.8;margin-top:3px}
-
-/* ─── LOGO BELT ─── */
+.float-stat-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:900;line-height:1}
+.float-stat-lbl{font-size:11px;opacity:.85;margin-top:3px}
 .belt{background:var(--c-ink2);padding:18px 48px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
 .belt-label{font-size:12px;color:rgba(255,255,255,.4);font-weight:500;margin-right:4px}
-.belt-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600}
-
-/* ─── PROBLEM ─── */
+.belt-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600}
 .problem{padding:100px 48px;max-width:1100px;margin:0 auto}
-.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--c-green);margin-bottom:14px}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--c-blue);margin-bottom:14px}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:16px}
-.problem h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.12;margin-bottom:32px}
-.pain-list{display:flex;flex-direction:column;gap:14px}
+.problem h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.12;margin-bottom:32px}
+.pain-list,.fix-list{display:flex;flex-direction:column;gap:14px}
 .pain{display:flex;gap:14px;padding:18px;background:var(--c-white);border:1px solid var(--c-border);border-radius:14px;transition:all .2s}
 .pain:hover{border-color:#fca5a5;box-shadow:0 4px 16px rgba(220,38,38,.06)}
 .pain-ico{width:40px;height:40px;border-radius:10px;background:#FEF2F2;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .pain h4{font-size:14px;font-weight:700;margin-bottom:4px}
 .pain p{font-size:13px;color:var(--c-muted);line-height:1.55}
-.fix-list{display:flex;flex-direction:column;gap:14px}
-.fix{display:flex;gap:14px;padding:18px;background:var(--c-green-l);border:1px solid rgba(26,107,85,.18);border-radius:14px;transition:all .2s}
-.fix:hover{box-shadow:0 4px 16px rgba(26,107,85,.1)}
-.fix-ico{width:40px;height:40px;border-radius:10px;background:rgba(26,107,85,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.fix h4{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--c-green)}
-.fix p{font-size:13px;color:#3d6b5e;line-height:1.55}
-
-/* ─── FEATURES ─── */
+.fix{display:flex;gap:14px;padding:18px;background:var(--c-blue-l);border:1px solid rgba(11,114,217,.2);border-radius:14px;transition:all .2s}
+.fix:hover{box-shadow:0 4px 16px rgba(11,114,217,.12)}
+.fix-ico{width:40px;height:40px;border-radius:10px;background:rgba(11,114,217,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.fix h4{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--c-blue-d)}
+.fix p{font-size:13px;color:#3A6099;line-height:1.55}
 .features{padding:100px 48px;background:var(--c-ink2);color:#fff}
 .features-inner{max-width:1100px;margin:0 auto}
-.features .section-tag{color:var(--c-green-m)}
-.features h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.12;color:#fff;max-width:560px;margin-bottom:12px}
+.features .section-tag{color:var(--c-cyan)}
+.features h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.12;color:#fff;max-width:560px;margin-bottom:12px}
 .features .sub{color:rgba(255,255,255,.5);font-size:16px;margin-bottom:56px;max-width:480px}
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
 .feat-card{padding:32px 28px;background:var(--c-ink2);position:relative;transition:background .2s;overflow:hidden}
-.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,204,154,.05),transparent);opacity:0;transition:opacity .3s}
-.feat-card:hover{background:#1e2d3d}
+.feat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,114,217,.07),transparent);opacity:0;transition:opacity .3s}
+.feat-card:hover{background:#162a45}
 .feat-card:hover::before{opacity:1}
-.feat-ico{width:46px;height:46px;border-radius:13px;background:rgba(46,204,154,.12);border:1px solid rgba(46,204,154,.2);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:18px}
+.feat-ico{width:46px;height:46px;border-radius:13px;background:rgba(26,126,255,.15);border:1px solid rgba(26,126,255,.25);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:18px}
 .feat-title{font-size:15px;font-weight:700;margin-bottom:9px;color:#fff}
 .feat-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.68}
-.feat-badge{display:inline-block;font-size:10px;font-weight:700;background:rgba(46,204,154,.15);color:var(--c-green-m);border:1px solid rgba(46,204,154,.25);padding:2px 8px;border-radius:100px;margin-top:10px}
-
-/* ─── PRICING ─── */
+.feat-badge{display:inline-block;font-size:10px;font-weight:700;background:rgba(0,198,255,.15);color:var(--c-cyan);border:1px solid rgba(0,198,255,.25);padding:2px 8px;border-radius:100px;margin-top:10px}
 .pricing{padding:100px 48px;max-width:1160px;margin:0 auto}
 .pricing .section-tag{display:block;text-align:center}
-.pricing h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;text-align:center;margin-bottom:12px}
+.pricing h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;text-align:center;margin-bottom:12px}
 .pricing-sub{text-align:center;color:var(--c-muted);font-size:16px;margin-bottom:16px}
 .billing-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:48px;font-size:14px;font-weight:600;color:var(--c-muted)}
-.toggle-pill{width:46px;height:26px;border-radius:100px;background:var(--c-green);cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.toggle-pill{width:46px;height:26px;border-radius:100px;background:var(--grad);cursor:pointer;position:relative;flex-shrink:0}
 .toggle-knob{width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:3px;left:3px;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .toggle-pill.yr .toggle-knob{transform:translateX(20px)}
 .save-tag{background:var(--c-amber-l);color:var(--c-amber);border:1px solid rgba(217,119,6,.2);font-size:11px;font-weight:700;padding:2px 9px;border-radius:100px}
-
 .plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
 .plan-card{background:var(--c-white);border:1.5px solid var(--c-border);border-radius:20px;padding:32px 28px;position:relative;transition:all .25s;display:flex;flex-direction:column}
-.plan-card:hover{border-color:var(--c-green);box-shadow:var(--shadow-lg)}
-.plan-card.hot{background:var(--c-ink2);border-color:var(--c-green);color:#fff;box-shadow:var(--shadow-lg)}
-.hot-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--c-green);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:.3px}
+.plan-card:hover{border-color:var(--c-blue);box-shadow:var(--shadow-lg)}
+.plan-card.hot{background:var(--c-ink2);border-color:var(--c-blue);color:#fff;box-shadow:var(--shadow-lg)}
+.hot-tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;white-space:nowrap}
 .plan-icon{font-size:30px;margin-bottom:16px}
-.plan-name{font-family:'Fraunces',serif;font-size:20px;font-weight:900;margin-bottom:6px;letter-spacing:-.5px}
+.plan-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:900;margin-bottom:6px;letter-spacing:-.5px}
 .plan-card.hot .plan-name{color:#fff}
 .plan-tagline{font-size:13px;color:var(--c-muted);margin-bottom:24px;line-height:1.5}
 .plan-card.hot .plan-tagline{color:rgba(255,255,255,.5)}
-.plan-price{font-family:'Fraunces',serif;font-size:48px;font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:8px}
+.plan-price{font-family:'Syne',sans-serif;font-size:48px;font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:8px}
 .plan-card.hot .plan-price{color:#fff}
 .plan-price sup{font-size:22px;vertical-align:top;margin-top:6px;display:inline-block}
-.plan-period{font-size:13px;font-weight:500;color:var(--c-muted);letter-spacing:0;font-family:'Plus Jakarta Sans',sans-serif;margin-left:2px}
+.plan-period{font-size:13px;font-weight:500;color:var(--c-muted);font-family:'Plus Jakarta Sans',sans-serif;margin-left:2px}
 .plan-card.hot .plan-period{color:rgba(255,255,255,.5)}
 .plan-divider{height:1px;background:var(--c-border);margin:20px 0}
 .plan-card.hot .plan-divider{background:rgba(255,255,255,.1)}
 .plan-feats{display:flex;flex-direction:column;gap:10px;flex:1}
 .pf{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.5}
-.pf .ck{font-size:13px;color:var(--c-green);flex-shrink:0;margin-top:1px;font-weight:700}
-.pf .no{font-size:13px;color:#CBD5E1;flex-shrink:0;margin-top:1px}
+.pf .ck{font-size:13px;color:var(--c-blue);flex-shrink:0;font-weight:700}
+.pf .no{font-size:13px;color:#CBD5E1;flex-shrink:0}
 .plan-card.hot .pf{color:rgba(255,255,255,.8)}
-.plan-card.hot .pf .ck{color:var(--c-green-m)}
+.plan-card.hot .pf .ck{color:var(--c-cyan)}
 .plan-card.hot .pf .no{color:rgba(255,255,255,.2)}
 .plan-cta{margin-top:24px;width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;border:none}
 .plan-cta.ghost{background:transparent;border:1.5px solid var(--c-border);color:var(--c-ink)}
-.plan-cta.ghost:hover{border-color:var(--c-green);color:var(--c-green)}
-.plan-cta.fill{background:var(--c-green);color:#fff;box-shadow:0 4px 16px rgba(26,107,85,.3)}
-.plan-cta.fill:hover{background:#155e47}
+.plan-cta.ghost:hover{border-color:var(--c-blue);color:var(--c-blue)}
+.plan-cta.fill{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(11,114,217,.3)}
 .plan-cta.dim{background:rgba(255,255,255,.12);color:#fff}
 .plan-cta.dim:hover{background:rgba(255,255,255,.2)}
 .pricing-guarantee{margin-top:28px;text-align:center;font-size:13px;color:var(--c-muted);display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
-.pricing-guarantee span{display:flex;align-items:center;gap:6px}
-
-/* SMS upsell */
-.sms-upsell{
-  margin-top:32px;
-  background:linear-gradient(135deg,var(--c-ink2),#1e3350);
-  border-radius:18px;padding:28px 36px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-  border:1px solid rgba(255,255,255,.06);
-}
+.sms-upsell{margin-top:32px;background:linear-gradient(135deg,var(--c-ink2),#0d2040);border-radius:18px;padding:28px 36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;border:1px solid rgba(11,114,217,.2)}
 .sms-ico{font-size:40px;flex-shrink:0}
-.sms-upsell h3{font-family:'Fraunces',serif;font-size:20px;font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:6px}
+.sms-upsell h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:6px}
 .sms-upsell p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;max-width:540px}
-.sms-cta{margin-left:auto;flex-shrink:0;background:var(--c-amber);color:#fff;padding:12px 22px;border-radius:11px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:all .2s}
+.sms-cta{margin-left:auto;flex-shrink:0;background:var(--c-amber);color:#fff;padding:12px 22px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:all .2s}
 .sms-cta:hover{background:#b45309;transform:translateY(-1px)}
-
-/* ─── HOW ─── */
 .how{padding:100px 48px;background:var(--c-bg2)}
 .how-inner{max-width:920px;margin:0 auto;text-align:center}
 .how .section-tag{display:block}
-.how h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;margin-bottom:12px}
+.how h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-2px;margin-bottom:12px}
 .how-sub{font-size:16px;color:var(--c-muted);margin-bottom:60px}
 .step-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.step-track::before{content:'';position:absolute;top:27px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);height:1px;background:linear-gradient(90deg,var(--c-green),var(--c-border));z-index:0}
+.step-track::before{content:'';position:absolute;top:27px;left:calc(12.5% + 4px);right:calc(12.5% + 4px);height:1px;background:linear-gradient(90deg,var(--c-blue),var(--c-cyan),var(--c-border));z-index:0}
 .step-item{position:relative;z-index:1;padding:0 12px;text-align:center}
-.step-num{width:54px;height:54px;border-radius:50%;background:var(--c-ink2);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:20px;font-weight:900;margin:0 auto 20px;border:3px solid var(--c-bg2);box-shadow:var(--shadow-sm)}
+.step-num{width:54px;height:54px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;border:3px solid var(--c-bg2);box-shadow:0 4px 16px rgba(11,114,217,.3)}
 .step-title{font-size:15px;font-weight:700;margin-bottom:8px}
 .step-desc{font-size:13px;color:var(--c-muted);line-height:1.6}
-
-/* ─── TESTIMONIALS ─── */
 .testis{padding:100px 48px;max-width:1100px;margin:0 auto}
 .testis .section-tag{display:block;text-align:center}
-.testis h2{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1.5px;text-align:center;margin-bottom:48px}
+.testis h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1.5px;text-align:center;margin-bottom:48px}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .testi-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:20px;padding:28px;transition:all .25s;display:flex;flex-direction:column}
-.testi-card:hover{border-color:var(--c-green);box-shadow:var(--shadow-md)}
+.testi-card:hover{border-color:var(--c-blue);box-shadow:var(--shadow-md)}
 .testi-stars{color:var(--c-amber);font-size:14px;letter-spacing:3px;margin-bottom:14px}
-.testi-text{font-size:14px;line-height:1.8;color:var(--c-ink);flex:1;margin-bottom:20px}
-.testi-text::before{content:'\201C';font-family:'Fraunces',serif;font-size:48px;color:var(--c-green-m);line-height:0;vertical-align:-16px;margin-right:3px}
+.testi-text{font-size:14px;line-height:1.8;color:var(--c-ink);flex:1;margin-bottom:20px;position:relative;padding-left:20px}
+.testi-text::before{content:'"';font-family:'Syne',sans-serif;font-size:52px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:absolute;left:0;top:-10px;line-height:1}
 .testi-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--c-border)}
-.testi-av{width:40px;height:40px;border-radius:50%;background:var(--c-ink2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.testi-av{width:40px;height:40px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .testi-name{font-size:14px;font-weight:700}
 .testi-role{font-size:12px;color:var(--c-muted)}
-
-/* ─── LEAD FORM ─── */
 .lead{padding:100px 48px;background:var(--c-ink2);position:relative;overflow:hidden}
-.lead::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(46,204,154,.08),transparent 70%);top:-200px;right:-200px;pointer-events:none}
+.lead::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(11,114,217,.1),transparent 70%);top:-200px;right:-200px;pointer-events:none}
+.lead::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,198,255,.06),transparent 70%);bottom:-100px;left:-100px;pointer-events:none}
 .lead-inner{max-width:640px;margin:0 auto;position:relative;z-index:1}
-.lead .section-tag{color:var(--c-green-m)}
-.lead h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:10px}
+.lead .section-tag{color:var(--c-cyan)}
+.lead h2{font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:10px}
 .lead-sub{color:rgba(255,255,255,.5);font-size:16px;line-height:1.7;margin-bottom:40px}
-.form-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:36px}
+.form-box{background:rgba(255,255,255,.05);border:1px solid rgba(11,114,217,.2);border-radius:20px;padding:36px}
 .fg{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .fg label{font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.8px}
 .fg input,.fg select{padding:13px 16px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;color:#fff;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color .2s;width:100%}
 .fg input::placeholder{color:rgba(255,255,255,.2)}
-.fg input:focus,.fg select:focus{border-color:var(--c-green-m)}
-.fg select option{background:#1E2A3A;color:#fff}
+.fg input:focus,.fg select:focus{border-color:var(--c-blue)}
+.fg select option{background:#0F2240;color:#fff}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-submit{width:100%;padding:16px;background:var(--c-green);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;box-shadow:0 6px 24px rgba(26,107,85,.4);margin-top:6px}
-.form-submit:hover{background:#155e47;transform:translateY(-2px)}
+.form-submit{width:100%;padding:16px;background:var(--grad);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;box-shadow:0 6px 24px rgba(11,114,217,.4);margin-top:6px}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(26,126,255,.5)}
 .form-trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;justify-content:center}
 .form-trust span{font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px}
 .form-ok{display:none;text-align:center;padding:40px 0;color:#fff}
-.ok-icon{width:72px;height:72px;border-radius:50%;background:rgba(46,204,154,.15);border:2px solid var(--c-green-m);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px}
-.form-ok h3{font-family:'Fraunces',serif;font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:10px}
+.ok-icon{width:72px;height:72px;border-radius:50%;background:rgba(26,126,255,.15);border:2px solid var(--c-blue);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px}
+.form-ok h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:10px}
 .form-ok p{color:rgba(255,255,255,.5);font-size:15px;line-height:1.7}
-
-/* ─── FAQ ─── */
 .faq{padding:80px 48px;max-width:740px;margin:0 auto}
-.faq h2{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1.5px;text-align:center;margin-bottom:40px}
+.faq h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1.5px;text-align:center;margin-bottom:40px}
 .faq-item{border-bottom:1px solid var(--c-border)}
 .faq-q{padding:18px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:15px;font-weight:600;gap:16px;transition:color .15s}
-.faq-q:hover{color:var(--c-green)}
+.faq-q:hover{color:var(--c-blue)}
 .faq-arrow{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--c-border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;transition:transform .25s,border-color .15s;color:var(--c-muted)}
-.faq-item.open .faq-arrow{transform:rotate(180deg);border-color:var(--c-green);color:var(--c-green)}
+.faq-item.open .faq-arrow{transform:rotate(180deg);border-color:var(--c-blue);color:var(--c-blue)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:14px;color:var(--c-muted);line-height:1.75}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:18px}
-
-/* ─── FOOTER ─── */
 footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(255,255,255,.06)}
-.foot-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.foot-wordmark{font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:#fff}
+.foot-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+.foot-logoimg{width:30px;height:30px;border-radius:8px;object-fit:cover}
+.foot-wordmarkimg{height:18px;object-fit:contain;filter:brightness(0) invert(1)}
 .foot-links{display:flex;gap:28px;flex-wrap:wrap}
 .foot-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
 .foot-links a:hover{color:#fff}
 .foot-right{font-size:12px;color:rgba(255,255,255,.3)}
-
-/* ─── REVEAL ─── */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.in{opacity:1;transform:none}
-.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
-
-/* ─── HERO ANIMATIONS ─── */
 .hero-left > *{animation:fadeUp .6s ease both}
 .hero-eyebrow{animation-delay:.05s}
 .hero h1{animation-delay:.12s}
@@ -343,8 +256,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
 .hero-social{animation-delay:.35s}
 .hero-visual{animation:fadeUp .7s .45s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-/* ─── MOBILE ─── */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;padding:100px 24px 60px;text-align:center;gap:48px}
   .hero-sub{max-width:100%}
@@ -379,11 +290,10 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
 
 <div class="topbar">🎉 Yeni kayıtlarda ilk 14 gün tamamen ücretsiz — Kredi kartı gerekmez &nbsp;<a href="#demo">Hemen başla →</a></div>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logomark">💧</div>
-    <span class="nav-wordmark">Yikanio</span>
+    <img src="logo.png" class="nav-logoimg" alt="Yikanio Logo"/>
+    <span class="nav-wordmark"><span class="w1">Yikan</span><span class="w2">io</span></span>
   </a>
   <div class="nav-links">
     <a href="#ozellikler">Özellikler</a>
@@ -397,7 +307,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   </div>
 </nav>
 
-<!-- HERO -->
 <section>
   <div class="hero">
     <div class="hero-left">
@@ -409,7 +318,7 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
         <a href="#ozellikler" class="btn-secondary">Nasıl çalışır? →</a>
       </div>
       <div class="hero-social">
-        <div class="avatars"><span>AH</span><span>FK</span><span>MÖ</span><span style="background:var(--c-green)">+</span></div>
+        <div class="avatars"><span>MY</span><span>AK</span><span>HD</span><span style="background:var(--grad)">+</span></div>
         <div class="rating">
           <span class="stars">★★★★★</span>
           <span>Türkiye genelinde kullanılıyor</span>
@@ -434,9 +343,9 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
             <div class="kpi"><div class="kpi-l">Bekleyen</div><div class="kpi-v amber">7</div></div>
           </div>
           <div class="order-rows">
-            <div class="order-row"><div class="or-id">SP-428573</div><div class="or-name">Suzan Ayaz</div><div class="or-price">₺1.200</div><div class="badge badge-bekl">⏳ Bekliyor</div></div>
-            <div class="order-row"><div class="or-id">SP-314085</div><div class="or-name">Kadir Karakuş</div><div class="or-price">₺1.580</div><div class="badge badge-yik">🫧 Yıkamada</div></div>
-            <div class="order-row"><div class="or-id">SP-250115</div><div class="or-name">Ali Veli</div><div class="or-price">₺960</div><div class="badge badge-haz">✅ Hazır</div></div>
+            <div class="order-row"><div class="or-id">SP-428573</div><div class="or-name">Mehmet Yılmaz</div><div class="or-price">₺1.200</div><div class="badge badge-bekl">⏳ Bekliyor</div></div>
+            <div class="order-row"><div class="or-id">SP-314085</div><div class="or-name">Ayşe Kara</div><div class="or-price">₺1.580</div><div class="badge badge-yik">🫧 Yıkamada</div></div>
+            <div class="order-row"><div class="or-id">SP-250115</div><div class="or-name">Hasan Demir</div><div class="or-price">₺960</div><div class="badge badge-haz">✅ Hazır</div></div>
           </div>
         </div>
       </div>
@@ -444,7 +353,7 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
         <div class="float-sms-ico">💬</div>
         <div class="float-sms-txt">
           <strong>SMS Gönderildi</strong>
-          <span>Suzan Ayaz → "Halınız hazır, teslime gelir misiniz?"</span>
+          <span>Mehmet Yılmaz → "Halınız hazır!"</span>
         </div>
       </div>
       <div class="float-stat">
@@ -455,7 +364,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   </div>
 </section>
 
-<!-- BELT -->
 <div class="belt">
   <span class="belt-label">Kullanan işletmeler:</span>
   <div class="belt-chip">AYAZ Halı Yıkama</div>
@@ -465,7 +373,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   <div class="belt-chip">+ Türkiye geneli →</div>
 </div>
 
-<!-- PROBLEM / SOLUTION -->
 <section class="problem rv">
   <div class="section-tag">Neden Yikanio?</div>
   <div class="problem-grid">
@@ -478,9 +385,9 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
       </div>
     </div>
     <div>
-      <h2>Yikanio ile gelen<span style="color:var(--c-green)"> özgürlük</span></h2>
+      <h2>Yikanio ile gelen <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">özgürlük</span></h2>
       <div class="fix-list">
-        <div class="fix"><div class="fix-ico">📋</div><div><h4>Tüm siparişler tek ekranda</h4><p>Bekliyor → Toplandı → Yıkamada → Hazır → Teslim. Her adım görünür, hiçbiri unutulmaz.</p></div></div>
+        <div class="fix"><div class="fix-ico">📋</div><div><h4>Tüm siparişler tek ekranda</h4><p>Bekliyor → Toplandı → Yıkamada → Hazır → Teslim. Her adım görünür.</p></div></div>
         <div class="fix"><div class="fix-ico">💬</div><div><h4>Otomatik SMS bildirimleri</h4><p>Halı hazır olunca müşteri otomatik bildirim alır. "Halım hazır mı?" aramaları tamamen biter.</p></div></div>
         <div class="fix"><div class="fix-ico">📊</div><div><h4>Canlı ciro raporları</h4><p>Aylık kazanç, en çok hangi halı, en sadık müşteriler — hepsi tek bakışta.</p></div></div>
       </div>
@@ -488,7 +395,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   </div>
 </section>
 
-<!-- FEATURES -->
 <section id="ozellikler" class="features">
   <div class="features-inner">
     <div class="section-tag">Özellikler</div>
@@ -505,7 +411,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="fiyatlar" class="pricing">
   <div class="section-tag">Fiyatlar</div>
   <h2>İşletmenizin büyüklüğüne göre</h2>
@@ -515,9 +420,7 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
     <div class="toggle-pill" id="billingPill" onclick="toggleBilling()"><div class="toggle-knob"></div></div>
     <span style="color:var(--c-ink)">Yıllık <span class="save-tag">2 ay bedava</span></span>
   </div>
-
   <div class="plan-grid rv">
-    <!-- Başlangıç -->
     <div class="plan-card">
       <div class="plan-icon">🌱</div>
       <div class="plan-name">Başlangıç</div>
@@ -535,8 +438,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
       </div>
       <button class="plan-cta ghost" onclick="goDemo()">Ücretsiz Dene</button>
     </div>
-
-    <!-- Pro -->
     <div class="plan-card hot">
       <div class="hot-tag">⚡ En Çok Tercih Edilen</div>
       <div class="plan-icon">🚀</div>
@@ -555,8 +456,6 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
       </div>
       <button class="plan-cta dim" onclick="goDemo()">Ücretsiz Dene</button>
     </div>
-
-    <!-- Kurumsal -->
     <div class="plan-card">
       <div class="plan-icon">🏢</div>
       <div class="plan-name">Kurumsal</div>
@@ -575,25 +474,22 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
       <button class="plan-cta ghost" onclick="goDemo()">Demo Talep Et</button>
     </div>
   </div>
-
   <div class="pricing-guarantee">
     <span>✅ 14 gün ücretsiz deneme</span>
     <span>💳 Kredi kartı gerekmez</span>
     <span>🚫 Taahhüt yok, istediğin zaman iptal</span>
     <span>📂 Verilerinizi her zaman dışa aktarın</span>
   </div>
-
   <div class="sms-upsell rv">
     <div class="sms-ico">📱</div>
     <div>
       <h3>Pasif Gelir: SMS Paketi Satışı</h3>
-      <p>Toplandı, yıkamada, hazır, teslim — her durum değişiminde müşteriniz otomatik SMS alır. Sistem içinden uygun fiyatlı paketler satın alın; toplu SMS kullanımında sizin için ek gelir kapısına dönüşür.</p>
+      <p>Toplandı, yıkamada, hazır, teslim — her durum değişiminde müşteriniz otomatik SMS alır. Sistem içinden uygun fiyatlı paketler satın alın.</p>
     </div>
     <button class="sms-cta" onclick="goDemo()">SMS paketlerini gör →</button>
   </div>
 </section>
 
-<!-- HOW -->
 <section id="nasil-calisir" class="how">
   <div class="how-inner">
     <div class="section-tag">Nasıl Çalışır</div>
@@ -608,30 +504,28 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   </div>
 </section>
 
-<!-- TESTIS -->
 <section class="testis">
   <div class="section-tag">Referanslar</div>
   <h2>Gerçek kullanıcılar, gerçek sonuçlar</h2>
   <div class="testi-grid rv">
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">Daha önce deftere yazıyordum, her gün bir şey karışıyordu. Yikanio ile siparişleri takip etmek çok kolaylaştı. Müşteriler artık 'halım hazır mı?' diye aramıyor, SMS geliyor.</div>
-      <div class="testi-author"><div class="testi-av">AH</div><div><div class="testi-name">Ahmet Hoca</div><div class="testi-role">Öztürk Halı Yıkama · İstanbul</div></div></div>
+      <div class="testi-text">Daha önce deftere yazıyordum, her gün bir şey karışıyordu. Yikanio ile siparişleri takip etmek çok kolaylaştı. Müşteriler artık "halım hazır mı?" diye aramıyor, SMS geliyor.</div>
+      <div class="testi-author"><div class="testi-av">MY</div><div><div class="testi-name">Mehmet Yılmaz</div><div class="testi-role">Yılmaz Halı Yıkama · İstanbul</div></div></div>
     </div>
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
       <div class="testi-text">Raporlar sayesinde hangi ayda ne kadar kazandığımı görüyorum. Hangi halı türü daha çok geliyor, bunu bilmek işimi planlamama çok yardımcı oldu. Gerçekten tavsiye ederim.</div>
-      <div class="testi-author"><div class="testi-av">FK</div><div><div class="testi-name">Fatma Kaya</div><div class="testi-role">Kaya Halı Bakım · Ankara</div></div></div>
+      <div class="testi-author"><div class="testi-av">AK</div><div><div class="testi-name">Ayşe Kara</div><div class="testi-role">Kara Halı Bakım · Ankara</div></div></div>
     </div>
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
       <div class="testi-text">3 şubem var, hepsini tek ekrandan takip ediyorum. Artık her şubeye gitme zorunluluğu kalmadı. Müşteri verimiz de gayet düzenli aktı, harika bir destek aldık.</div>
-      <div class="testi-author"><div class="testi-av">MÖ</div><div><div class="testi-name">Mustafa Öztürk</div><div class="testi-role">Öztürk Grup · İzmir</div></div></div>
+      <div class="testi-author"><div class="testi-av">HD</div><div><div class="testi-name">Hasan Demir</div><div class="testi-role">Demir Grup Halı · İzmir</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- LEAD FORM -->
 <section id="demo" class="lead">
   <div class="lead-inner">
     <div class="section-tag">Demo Talep Et</div>
@@ -640,21 +534,15 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
     <div class="form-box">
       <div id="leadForm">
         <div class="fg-row">
-          <div class="fg"><label>Adınız Soyadınız</label><input type="text" id="fn" placeholder="Ahmet Yılmaz"/></div>
+          <div class="fg"><label>Adınız Soyadınız</label><input type="text" id="fn" placeholder="Mehmet Yılmaz"/></div>
           <div class="fg"><label>Telefon *</label><input type="tel" id="fp" placeholder="0532 xxx xx xx"/></div>
         </div>
         <div class="fg"><label>İşletme Adı *</label><input type="text" id="fb" placeholder="Yılmaz Halı Yıkama"/></div>
         <div class="fg-row">
           <div class="fg"><label>Şehir</label><input type="text" id="fc" placeholder="İstanbul"/></div>
-          <div class="fg">
-            <label>Aylık Sipariş Hacmi</label>
-            <select id="fv"><option value="">Seçin...</option><option>1–50 sipariş/ay</option><option>50–200 sipariş/ay</option><option>200–500 sipariş/ay</option><option>500+ sipariş/ay</option></select>
-          </div>
+          <div class="fg"><label>Aylık Sipariş Hacmi</label><select id="fv"><option value="">Seçin...</option><option>1–50 sipariş/ay</option><option>50–200 sipariş/ay</option><option>200–500 sipariş/ay</option><option>500+ sipariş/ay</option></select></div>
         </div>
-        <div class="fg">
-          <label>İlgilendiğiniz Plan</label>
-          <select id="fpl"><option value="">Seçin...</option><option>Başlangıç – ₺499/ay</option><option>Profesyonel – ₺899/ay</option><option>Kurumsal – ₺1.499/ay</option><option>Henüz karar vermedim</option></select>
-        </div>
+        <div class="fg"><label>İlgilendiğiniz Plan</label><select id="fpl"><option value="">Seçin...</option><option>Başlangıç – ₺499/ay</option><option>Profesyonel – ₺899/ay</option><option>Kurumsal – ₺1.499/ay</option><option>Henüz karar vermedim</option></select></div>
         <button class="form-submit" onclick="submitLead()">🚀 Demo Talep Et — Tamamen Ücretsiz</button>
         <div class="form-trust">
           <span>🔒 Bilgileriniz güvende</span>
@@ -666,81 +554,66 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
       <div class="form-ok" id="formOk">
         <div class="ok-icon">✅</div>
         <h3>Talebiniz Alındı!</h3>
-        <p>En geç 24 saat içinde sizi arayacağız.<br/>Müşteri listenizi hazırlamaya başlayabilirsiniz, aktarmada size yardımcı olacağız.<br/><br/>Teşekkürler, görüşürüz! 🙌</p>
+        <p>En geç 24 saat içinde sizi arayacağız.<br/>Müşteri listenizi hazırlamaya başlayabilirsiniz.<br/><br/>Teşekkürler, görüşürüz! 🙌</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="sss" class="faq">
   <h2>Aklınızdaki sorular</h2>
-  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">14 gün deneme sonrası ne olur? <span class="faq-arrow">▼</span></div><div class="faq-a">Deneme süresi bitince plan seçip ödeme yaparsınız. Hiçbir şekilde otomatik ücret alınmaz. Ödeme yapmadan devam etmek istemezseniz verileriniz 30 gün daha korunur ve istediğinizde dışa aktarabilirsiniz.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">Binlerce müşterim var, verileri nasıl aktarırım? <span class="faq-arrow">▼</span></div><div class="faq-a">Excel veya herhangi bir listede müşteri bilgilerinizi bize gönderin, sisteme biz aktaralım. Kurumsal planda bu hizmet zaten dahil. Diğer planlarda da ücretsiz olarak yapıyoruz — bu konuda hiç endişelenmeyin.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">İnternet olmadan çalışıyor mu? <span class="faq-arrow">▼</span></div><div class="faq-a">Yikanio bulut tabanlıdır ve internet bağlantısı gerektirir. Ancak mobil veri ile de son derece akıcı çalışır. Ayrıca özel uygulama indirme zorunluluğu yoktur; telefon tarayıcınızdan anında açılır.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">SMS entegrasyonu nasıl çalışır, ek ücret var mı? <span class="faq-arrow">▼</span></div><div class="faq-a">Profesyonel ve Kurumsal planlarda SMS entegrasyonu aktiftir. SMS'leri paket halinde sistem üzerinden satın alırsınız. Başlangıç planı içinde aylık 100 SMS hediye gelir. Paket fiyatları son derece uygun tutulmaktadır.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">14 gün deneme sonrası ne olur? <span class="faq-arrow">▼</span></div><div class="faq-a">Deneme süresi bitince plan seçip ödeme yaparsınız. Hiçbir şekilde otomatik ücret alınmaz. Ödeme yapmadan devam etmek istemezseniz verileriniz 30 gün daha korunur.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">Binlerce müşterim var, verileri nasıl aktarırım? <span class="faq-arrow">▼</span></div><div class="faq-a">Excel veya herhangi bir listede müşteri bilgilerinizi bize gönderin, sisteme biz aktaralım. Kurumsal planda bu hizmet zaten dahil. Diğer planlarda da ücretsiz olarak yapıyoruz.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">İnternet olmadan çalışıyor mu? <span class="faq-arrow">▼</span></div><div class="faq-a">Yikanio bulut tabanlıdır ve internet bağlantısı gerektirir. Ancak mobil veri ile de son derece akıcı çalışır. Özel uygulama indirme zorunluluğu yoktur; telefon tarayıcınızdan anında açılır.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">SMS entegrasyonu nasıl çalışır, ek ücret var mı? <span class="faq-arrow">▼</span></div><div class="faq-a">Profesyonel ve Kurumsal planlarda SMS entegrasyonu aktiftir. SMS'leri paket halinde sistem üzerinden satın alırsınız. Başlangıç planı içinde aylık 100 SMS hediye gelir.</div></div>
   <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">Birden fazla şubem var, kullanabilir miyim? <span class="faq-arrow">▼</span></div><div class="faq-a">Evet! Kurumsal plan birden fazla şubeyi tek hesaptan yönetmenize izin verir. Her şube ayrı sipariş akışına sahip olur, tek ekrandan hepsini takip edebilirsiniz.</div></div>
   <div class="faq-item"><div class="faq-q" onclick="faqToggle(this)">İstediğim zaman iptal edebilir miyim? <span class="faq-arrow">▼</span></div><div class="faq-a">Evet, herhangi bir taahhüt yoktur. Hesabınızı istediğiniz zaman iptal edebilirsiniz. Verilerinizi dışa aktarmanıza her zaman yardımcı oluruz.</div></div>
 </section>
 
 <footer>
   <a href="#" class="foot-brand">
-    <div class="nav-logomark">💧</div>
-    <span class="foot-wordmark">Yikanio</span>
-  </a>
+    <img src="logo.png" class="foot-logoimg" alt="Yikanio" style="height:32px;object-fit:contain;filter:brightness(0) invert(1)"/></a>
   <div class="foot-links">
     <a href="#ozellikler">Özellikler</a>
     <a href="#fiyatlar">Fiyatlar</a>
     <a href="#nasil-calisir">Nasıl Çalışır</a>
     <a href="#demo">Demo</a>
-    <a href="mailto:info@yikanio.com">info@yikanio.com</a>
+    <a href="/cdn-cgi/l/email-protection#c5acaba3aa85bcacaea4abacaaeba6aaa8"><span class="__cf_email__" data-cfemail="7c15121a133c0515171d121513521f1311">[email&#160;protected]</span></a>
   </div>
   <div class="foot-right">© 2026 Yikanio · Tüm hakları saklıdır</div>
 </footer>
 
-<script>
-// Billing toggle
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let yr=false;
 const pm={m:[499,899,1499],y:[415,749,1249]};
 function toggleBilling(){
   yr=!yr;
   document.getElementById('billingPill').classList.toggle('yr',yr);
   const p=yr?pm.y:pm.m;
-  document.getElementById('pp1').innerHTML=`<sup>₺</sup>${p[0]}<span class="plan-period">/ay</span>`;
-  document.getElementById('pp2').innerHTML=`<sup>₺</sup>${p[1]}<span class="plan-period">/ay</span>`;
-  document.getElementById('pp3').innerHTML=`<sup>₺</sup>${p[2]}<span class="plan-period">/ay</span>`;
+  document.getElementById('pp1').innerHTML='<sup>₺</sup>'+p[0]+'<span class="plan-period">/ay</span>';
+  document.getElementById('pp2').innerHTML='<sup>₺</sup>'+p[1]+'<span class="plan-period">/ay</span>';
+  document.getElementById('pp3').innerHTML='<sup>₺</sup>'+p[2]+'<span class="plan-period">/ay</span>';
 }
-
 function goDemo(){document.getElementById('demo').scrollIntoView({behavior:'smooth',block:'start'})}
-
-// Lead form
 function submitLead(){
   const p=document.getElementById('fp').value.trim();
   const b=document.getElementById('fb').value.trim();
   if(!p||!b){alert('Lütfen en azından telefon numarası ve işletme adını doldurun.');return}
   document.getElementById('leadForm').style.display='none';
   document.getElementById('formOk').style.display='block';
-  // TODO: Formspree / EmailJS / Supabase leads tablosu entegrasyonu
-  console.log('Lead:',{name:document.getElementById('fn').value,phone:p,biz:b,city:document.getElementById('fc').value,vol:document.getElementById('fv').value,plan:document.getElementById('fpl').value});
 }
-
-// FAQ
 function faqToggle(el){
   const item=el.parentElement;
   const was=item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
   if(!was)item.classList.add('open');
 }
-
-// Scroll reveal
 const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
 </script>
