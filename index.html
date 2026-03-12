@@ -246,8 +246,9 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
 .foot-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
 .foot-links a:hover{color:#fff}
 .foot-right{font-size:12px;color:rgba(255,255,255,.3)}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.rv.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .hero-left > *{animation:fadeUp .6s ease both}
 .hero-eyebrow{animation-delay:.05s}
 .hero h1{animation-delay:.12s}
@@ -483,10 +484,10 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   <div class="sms-upsell rv">
     <div class="sms-ico">💬</div>
     <div>
-      <h3>"Halım hazır mı?" aramaları biter</h3>
-      <p>Sipariş durumu her değiştiğinde müşterinize otomatik SMS gider. Toplandı, yıkamada, hazır, teslim — tek tıkla bildirim. Siz telefona bakmadan işler yürür.</p>
+      <h3>WhatsApp ile Anında Müşteri Bildirimi</h3>
+      <p>Toplandı, yıkamada, hazır, teslim — her durum değişiminde tek tıkla WhatsApp mesajı gönderin. Müşteriniz her adımı anlık takip eder, sizi aramak zorunda kalmaz.</p>
     </div>
-    <button class="sms-cta" onclick="goDemo()">Ücretsiz dene →</button>
+    <button class="sms-cta" onclick="goDemo()">Ücretsiz deneyin →</button>
   </div>
 </section>
 
@@ -542,8 +543,8 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
           <div class="fg"><label>Şehir</label><input type="text" id="fc" placeholder="İstanbul"/></div>
           <div class="fg"><label>Aylık Sipariş Hacmi</label><select id="fv"><option value="">Seçin...</option><option>1–50 sipariş/ay</option><option>50–200 sipariş/ay</option><option>200–500 sipariş/ay</option><option>500+ sipariş/ay</option></select></div>
         </div>
-        <div class="fg"><label>İlgilendiğiniz Plan</label><select id="fpl"><option value="">Seçin...</option><option>Başlangıç – ₺1.250/ay</option><option>Profesyonel – ₺2.450/ay</option><option>Kurumsal – ₺4.500/ay</option><option>Henüz karar vermedim</option></select></div>
-        <button class="form-submit" onclick="submitLead(this)">🚀 Demo Talep Et — Tamamen Ücretsiz</button>
+        <div class="fg"><label>İlgilendiğiniz Plan</label><select id="fpl"><option value="">Seçin...</option><option>Başlangıç – ₺499/ay</option><option>Profesyonel – ₺899/ay</option><option>Kurumsal – ₺1.499/ay</option><option>Henüz karar vermedim</option></select></div>
+        <button class="form-submit" onclick="submitLead()">🚀 Demo Talep Et — Tamamen Ücretsiz</button>
         <div class="form-trust">
           <span>🔒 Bilgileriniz güvende</span>
           <span>💳 Kart bilgisi yok</span>
@@ -572,13 +573,13 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
 
 <footer>
   <a href="#" class="foot-brand">
-    <img src="logo.png" class="foot-logoimg" alt="Yıkanio" style="height:32px;object-fit:contain;filter:brightness(0) invert(1)"/></a>
+    <img src="logo.png" class="foot-logoimg" alt="Yikanio" style="height:32px;object-fit:contain;filter:brightness(0) invert(1)"/></a>
   <div class="foot-links">
     <a href="#ozellikler">Özellikler</a>
     <a href="#fiyatlar">Fiyatlar</a>
     <a href="#nasil-calisir">Nasıl Çalışır</a>
     <a href="#demo">Demo</a>
-    <a href="/cdn-cgi/l/email-protection#046d6a626b447d6d6f656a6d6b2a676b69"><span class="__cf_email__" data-cfemail="bed7d0d8d1fec7d7d5dfd0d7d190ddd1d3">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#c5acaba3aa85bcacaea4abacaaeba6aaa8"><span class="__cf_email__" data-cfemail="7c15121a133c0515171d121513521f1311">[email&#160;protected]</span></a>
   </div>
   <div class="foot-right">© 2026 Yıkanio · Tüm hakları saklıdır</div>
 </footer>
@@ -629,54 +630,15 @@ function goDemo() {
   document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' }); 
 }
 
-async function submitLead(btnEl) {
-  const ad   = document.getElementById('fn').value.trim();
-  const tel  = document.getElementById('fp').value.trim();
-  const islt = document.getElementById('fb').value.trim();
-  const shr  = document.getElementById('fc').value.trim();
-  const hcm  = document.getElementById('fv').value;
-  const plan = document.getElementById('fpl').value;
-
-  if (!tel || !islt) {
+function submitLead() {
+  const p = document.getElementById('fp').value.trim();
+  const b = document.getElementById('fb').value.trim();
+  if (!p || !b) {
     alert('Lütfen en azından telefon numarası ve işletme adını doldurun.');
     return;
   }
-
-  const btn = btnEl || document.querySelector('.form-submit');
-  btn.disabled = true;
-  btn.textContent = 'Gönderiliyor...';
-
-  try {
-    // Formspree endpoint - kendi form ID'nizi buraya girin: https://formspree.io
-    const FORMSPREE_ID = 'YOUR_FORM_ID'; // örn: 'xpwzgkjb'
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        'Ad Soyad': ad,
-        'Telefon': tel,
-        'İşletme': islt,
-        'Şehir': shr,
-        'Aylık Hacim': hcm,
-        'Plan': plan,
-        '_subject': `Yıkanio Demo Talebi — ${islt}`
-      })
-    });
-
-    if (FORMSPREE_ID === 'YOUR_FORM_ID' || res.ok) {
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('formOk').style.display = 'block';
-    } else {
-      throw new Error('Gönderilemedi');
-    }
-  } catch (e) {
-    // Formspree henüz kurulmamışsa veya hata varsa yine de teşekkür göster
-    document.getElementById('leadForm').style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
-    console.log('Lead (offline):', { ad, tel, islt, shr, hcm, plan });
-  } finally {
-    btn.disabled = false;
-  }
+  document.getElementById('leadForm').style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
 }
 
 function faqToggle(el) {
@@ -686,10 +648,44 @@ function faqToggle(el) {
   if (!was) item.classList.add('open');
 }
 
+window.addEventListener('load', () => {
+  document.querySelectorAll('.rv:not(.in)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 100) el.classList.add('in');
+  });
+});
+
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.rv:not(.in)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 20) el.classList.add('in');
+  });
+}, { passive: true });
+
 const ro = new IntersectionObserver(entries => entries.forEach(e => {
-  if (e.isIntersecting) e.target.classList.add('in');
-}), { threshold: .1 });
-document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+  if (e.isIntersecting) {
+    e.target.classList.add('in');
+    ro.unobserve(e.target);
+  }
+}), { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    el.classList.add('in');
+  } else {
+    ro.observe(el);
+  }
+});
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.ad
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
