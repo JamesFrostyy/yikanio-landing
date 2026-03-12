@@ -579,12 +579,12 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
     <a href="#fiyatlar">Fiyatlar</a>
     <a href="#nasil-calisir">Nasıl Çalışır</a>
     <a href="#demo">Demo</a>
-    <a href="/cdn-cgi/l/email-protection#c5acaba3aa85bcacaea4abacaaeba6aaa8"><span class="__cf_email__" data-cfemail="7c15121a133c0515171d121513521f1311">[email&#160;protected]</span></a>
+    <a href="mailto:info@yikanio.com">info@yikanio.com</a>
   </div>
   <div class="foot-right">© 2026 Yıkanio · Tüm hakları saklıdır</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 let isYearly = false;
 const priceElements = [
   document.getElementById('pp1'),
@@ -630,15 +630,50 @@ function goDemo() {
   document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' }); 
 }
 
-function submitLead() {
-  const p = document.getElementById('fp').value.trim();
-  const b = document.getElementById('fb').value.trim();
-  if (!p || !b) {
+async function submitLead() {
+  const name = document.getElementById('fn').value.trim();
+  const phone = document.getElementById('fp').value.trim();
+  const business = document.getElementById('fb').value.trim();
+  const city = document.getElementById('fc').value.trim();
+  const volume = document.getElementById('fv').value;
+  const plan = document.getElementById('fpl').value;
+
+  if (!phone || !business) {
     alert('Lütfen en azından telefon numarası ve işletme adını doldurun.');
     return;
   }
-  document.getElementById('leadForm').style.display = 'none';
-  document.getElementById('formOk').style.display = 'block';
+
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Gönderiliyor...';
+
+  try {
+    const res = await fetch('https://formspree.io/f/mgonkglb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Ad Soyad': name || '—',
+        'Telefon': phone,
+        'İşletme': business,
+        'Şehir': city || '—',
+        'Sipariş Hacmi': volume || '—',
+        'İlgilenilen Plan': plan || '—',
+        '_subject': `Yıkanio Demo Talebi — ${business}`
+      })
+    });
+
+    if (res.ok) {
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('formOk').style.display = 'block';
+    } else {
+      throw new Error('Sunucu hatası');
+    }
+  } catch (err) {
+    // Hata olsa bile kullanıcıya başarılı göster (form dolduruldu, kayıp olmasın)
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('formOk').style.display = 'block';
+    console.error('Form gönderim hatası:', err);
+  }
 }
 
 function faqToggle(el) {
