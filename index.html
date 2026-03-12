@@ -584,36 +584,81 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let yr=false;
-const pm={m:[499,899,1499],y:[415,749,1249]};
-function toggleBilling(){
-  yr=!yr;
-  document.getElementById('billingPill').classList.toggle('yr',yr);
-  const p=yr?pm.y:pm.m;
-  document.getElementById('pp1').innerHTML='<sup>₺</sup>'+p[0]+'<span class="plan-period">/ay</span>';
-  document.getElementById('pp2').innerHTML='<sup>₺</sup>'+p[1]+'<span class="plan-period">/ay</span>';
-  document.getElementById('pp3').innerHTML='<sup>₺</sup>'+p[2]+'<span class="plan-period">/ay</span>';
+let isYearly = false;
+const priceElements = [
+  document.getElementById('pp1'),
+  document.getElementById('pp2'),
+  document.getElementById('pp3')
+];
+
+// Store initial monthly prices in data attributes.
+// This runs once on page load.
+priceElements.forEach(el => {
+  if (el) {
+    // a regular expression to extract only the digits.
+    const priceText = el.innerText.replace(/\D/g, '');
+    el.setAttribute('data-monthly-price', priceText);
+  }
+});
+
+function toggleBilling() {
+  isYearly = !isYearly;
+  document.getElementById('billingPill').classList.toggle('yr', isYearly);
+
+  priceElements.forEach(el => {
+    if (el) {
+      const monthlyPrice = parseInt(el.getAttribute('data-monthly-price'), 10);
+      let displayPrice;
+      
+      if (isYearly) {
+        // "2 months free" means we pay for 10 months over a 12 month period.
+        // So the effective monthly price is (monthly * 10) / 12.
+        displayPrice = Math.round((monthlyPrice * 10) / 12);
+      } else {
+        displayPrice = monthlyPrice;
+      }
+      
+      // Format the number with dots for thousands separators
+      const formattedPrice = displayPrice.toLocaleString('tr-TR');
+      el.innerHTML = `<sup>₺</sup>${formattedPrice}<span class="plan-period">/ay</span>`;
+    }
+  });
 }
-function goDemo(){document.getElementById('demo').scrollIntoView({behavior:'smooth',block:'start'})}
-function submitLead(){
-  const p=document.getElementById('fp').value.trim();
-  const b=document.getElementById('fb').value.trim();
-  if(!p||!b){alert('Lütfen en azından telefon numarası ve işletme adını doldurun.');return}
-  document.getElementById('leadForm').style.display='none';
-  document.getElementById('formOk').style.display='block';
+
+function goDemo() { 
+  document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' }); 
 }
-function faqToggle(el){
-  const item=el.parentElement;
-  const was=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!was)item.classList.add('open');
+
+function submitLead() {
+  const p = document.getElementById('fp').value.trim();
+  const b = document.getElementById('fb').value.trim();
+  if (!p || !b) {
+    alert('Lütfen en azından telefon numarası ve işletme adını doldurun.');
+    return;
+  }
+  document.getElementById('leadForm').style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
 }
-const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+
+function faqToggle(el) {
+  const item = el.parentElement;
+  const was = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!was) item.classList.add('open');
+}
+
+const ro = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('in');
+}), { threshold: .1 });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 </script>
