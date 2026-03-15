@@ -418,7 +418,7 @@ footer{background:var(--c-ink2);padding:48px;display:flex;justify-content:space-
   <p class="pricing-sub">Taahhüt yok. İstediğiniz zaman plan değiştirin veya iptal edin.</p>
   <div class="billing-toggle">
     <span style="color:var(--c-ink)">Aylık</span>
-    <div class="toggle-pill yr" id="billingPill" onclick="toggleBilling()"><div class="toggle-knob"></div></div>
+    <div class="toggle-pill" id="billingPill" onclick="toggleBilling()"><div class="toggle-knob"></div></div>
     <span style="color:var(--c-ink)">Yıllık <span class="save-tag">%20 İNDİRİM</span></span>
   </div>
   <div class="plan-grid rv">
@@ -612,10 +612,9 @@ function toggleBilling() {
       const monthlyPrice = parseInt(el.getAttribute('data-monthly-price'), 10);
       let displayPrice;
       
-      if (isYearly) {
-        // "2 months free" means we pay for 10 months over a 12 month period.
-        // So the effective monthly price is (monthly * 10) / 12.
-        displayPrice = Math.round((monthlyPrice * 10) / 12);
+     if (isYearly) {
+        // %20 İndirim hesaplaması
+        displayPrice = Math.round(monthlyPrice * 0.8);
       } else {
         displayPrice = monthlyPrice;
       }
